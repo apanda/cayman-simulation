@@ -57,8 +57,8 @@ if __name__ == '__main__':
   if N < Nm:
     print "The file size should be larger than the number of servers"
     sys.exit(1)
-  if M > Nm:
-    print "The number of samples should be smaller than the number of servers"
+  if M > N:
+    print "The number of samples should be smaller than the number of blocks"
     sys.exit(1)
 
   accessed_blocks = defaultdict(lambda: 0)
