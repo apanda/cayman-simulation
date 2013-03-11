@@ -2,7 +2,6 @@
 
 ###########
 # Implement Sim1 written by Panda
-# Currently slots per machine is 1
 # TODO: 
 # Simu II - blocks are not evenly placed on machines
 ###########
