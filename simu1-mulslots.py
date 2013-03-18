@@ -39,18 +39,20 @@ if __name__ == '__main__':
     print "The number of samples should be smaller than the number of blocks"
     sys.exit(1)
 
-  accessed_blocks = defaultdict(lambda: 0)
-  accessed_slots = defaultdict(lambda: 0)
-  distinct_samples = defaultdict(lambda: 0)
-  blks_sample = defaultdict(lambda: [])
-  same_samples = 0
-  non_local_access = 0
-  wait_jobs = []
+
   
   machs_blks = alloc_blks_to_machs(N,Nm)
   machs_slots = alloc_slots_to_machs(Ns,Nm)
 
   for it in xrange(0, itera): #iterations
+    accessed_blocks = defaultdict(lambda: 0)
+    accessed_slots = defaultdict(lambda: 0)
+    distinct_samples = defaultdict(lambda: 0)
+    blks_sample = defaultdict(lambda: [])
+    same_samples = 0
+    non_local_access = 0
+    wait_jobs = []
+    
     slots_idle = [s for s in xrange(0, Ns)]
     (jobs_in, jobs_duration) = possion(sim_time, arrival_int_mean, job_dur_mean)
 
