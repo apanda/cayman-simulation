@@ -41,7 +41,8 @@ if __name__ == '__main__':
 
 
   
-  machs_blks = alloc_blks_to_machs(N,Nm)
+  #machs_blks = alloc_blks_to_machs(N,Nm)
+  machs_blks = random_alloc_blks_to_machs(N,Nm)
   machs_slots = alloc_slots_to_machs(Ns,Nm)
 
   for it in xrange(0, itera): #iterations
