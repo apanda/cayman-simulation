@@ -1,7 +1,6 @@
-
 import sys
 from numpy import arange
-from random import choice, sample, expovariate
+from random import choice, sample, expovariate, normalvariate, weibullvariate
 from collections import defaultdict
 from math import ceil
 
@@ -14,6 +13,14 @@ def alloc_blks_to_machs(N, Nm):
   left = N % Nm
   for a in xrange(0, left):
     mach_blks[a].append(Nm*Bm + a)
+  return mach_blks
+  
+def random_alloc_blks_to_machs(N, Nm):
+  mach_blks = defaultdict(list)
+  machs = [k for k in xrange(0,Nm)]
+  for blk in xrange(0, N):
+    rand_mach = choice(machs)
+    mach_blks[rand_mach].append(blk)
   return mach_blks
 
 def map_blk_to_mach(blk, machs_blks):
@@ -44,6 +51,8 @@ def possion(total_time, arrival_int, duration):
   jobs_in = []
   jobs_duration = []
   arrival_time = expovariate(1.0/arrival_int)
+  #arrival_time = normalvariate(arrival_int, 2*arrival_int)  #mu, sigma
+  #arrival_time = weibullvariate(1, 0.5)  #scale, shape
   while arrival_time < total_time:
     jobs_in.append(arrival_time)
     dur = expovariate(1.0/duration)
